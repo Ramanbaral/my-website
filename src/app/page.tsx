@@ -1,103 +1,636 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+  ExternalLink,
+  Calendar,
+  Award,
+  BookOpen,
+  Briefcase,
+  Download,
+} from "lucide-react";
 
-export default function Home() {
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ThemeToggle } from "@/components/theme-toggle";
+import Link from "next/link";
+
+export default function Portfolio() {
+  const [activeTab, setActiveTab] = useState("projects");
+
+  const projects = [
+    {
+      title: "E-Commerce Platform",
+      description:
+        "Full-stack e-commerce solution built with Next.js, TypeScript, and Stripe integration",
+      tech: ["Next.js", "TypeScript", "Stripe", "Prisma", "PostgreSQL"],
+      link: "https://github.com/username/ecommerce",
+      demo: "https://ecommerce-demo.vercel.app",
+    },
+    {
+      title: "Task Management App",
+      description:
+        "Real-time collaborative task management with drag-and-drop functionality",
+      tech: ["React", "Node.js", "Socket.io", "MongoDB", "Express"],
+      link: "https://github.com/username/taskmanager",
+      demo: "https://taskmanager-demo.vercel.app",
+    },
+    {
+      title: "AI Chat Application",
+      description:
+        "Intelligent chatbot with natural language processing and context awareness",
+      tech: ["Python", "FastAPI", "OpenAI API", "React", "WebSocket"],
+      link: "https://github.com/username/ai-chat",
+      demo: "https://ai-chat-demo.vercel.app",
+    },
+  ];
+
+  const blogs = [
+    {
+      title: "Building Scalable React Applications",
+      description:
+        "Best practices for structuring large React applications with proper state management",
+      date: "2024-01-15",
+      readTime: "8 min read",
+      link: "https://blog.example.com/scalable-react",
+    },
+    {
+      title: "Understanding TypeScript Generics",
+      description:
+        "A comprehensive guide to TypeScript generics with practical examples",
+      date: "2024-01-08",
+      readTime: "12 min read",
+      link: "https://blog.example.com/typescript-generics",
+    },
+    {
+      title: "Optimizing Next.js Performance",
+      description:
+        "Techniques for improving Core Web Vitals and overall performance in Next.js apps",
+      date: "2023-12-20",
+      readTime: "10 min read",
+      link: "https://blog.example.com/nextjs-performance",
+    },
+  ];
+
+  const certifications = [
+    {
+      title: "AWS Certified Solutions Architect",
+      issuer: "Amazon Web Services",
+      date: "2024-01-10",
+      credentialId: "AWS-SAA-123456",
+      link: "https://www.credly.com/badges/aws-saa-123456",
+      description:
+        "Validates expertise in designing distributed systems on AWS platform with focus on scalability, security, and cost optimization.",
+      skills: [
+        "Cloud Architecture",
+        "Security",
+        "Scalability",
+        "Cost Optimization",
+      ],
+    },
+    {
+      title: "Google Cloud Professional Developer",
+      issuer: "Google Cloud",
+      date: "2023-11-15",
+      credentialId: "GCP-PD-789012",
+      link: "https://www.credential.net/gcp-pd-789012",
+      description:
+        "Demonstrates ability to build scalable and reliable applications using Google Cloud technologies and best practices.",
+      skills: ["App Development", "Cloud Services", "DevOps", "Monitoring"],
+    },
+    {
+      title: "Meta React Developer Certificate",
+      issuer: "Meta",
+      date: "2023-09-20",
+      credentialId: "META-RD-345678",
+      link: "https://www.coursera.org/account/accomplishments/certificate/META-RD-345678",
+      description:
+        "Comprehensive certification covering React fundamentals, advanced patterns, and modern development practices.",
+      skills: [
+        "React",
+        "JavaScript",
+        "Frontend Development",
+        "Component Design",
+      ],
+    },
+  ];
+
+  const experience = [
+    {
+      title: "Senior Software Engineer",
+      company: "TechCorp Inc.",
+      period: "2022 - Present",
+      description:
+        "Lead development of microservices architecture, mentored junior developers, and improved system performance by 40%",
+      tech: ["React", "Node.js", "AWS", "Docker", "Kubernetes"],
+    },
+    {
+      title: "Full Stack Developer",
+      company: "StartupXYZ",
+      period: "2020 - 2022",
+      description:
+        "Built and maintained web applications, implemented CI/CD pipelines, and collaborated with cross-functional teams",
+      tech: ["Vue.js", "Python", "PostgreSQL", "Redis", "Jenkins"],
+    },
+    {
+      title: "Frontend Developer",
+      company: "WebSolutions Ltd.",
+      period: "2019 - 2020",
+      description:
+        "Developed responsive web interfaces, optimized for performance, and ensured cross-browser compatibility",
+      tech: ["JavaScript", "HTML5", "CSS3", "Sass", "Webpack"],
+    },
+  ];
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-background">
+      <div className="flex">
+        {/* Fixed Left Sidebar */}
+        <div className="fixed left-0 top-0 h-screen w-80 bg-muted/30 border-r border-border p-8 overflow-y-auto">
+          <div className="flex flex-col items-center space-y-6">
+            {/* Profile Image */}
+            <div className="relative">
+              <Image
+                src="/profile.jpeg"
+                alt="Profile Picture"
+                width={150}
+                height={150}
+                className="rounded-full border-4 border-primary/20"
+              />
+            </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {/* Name and Title */}
+            <div className="text-center space-y-2">
+              <h1 className="text-2xl font-bold text-primary">Raman Baral</h1>
+              <p className="text-lg text-muted-foreground">
+                FullStack Software Engineer
+              </p>
+            </div>
+
+            {/* Introduction */}
+            <div className="text-center space-y-4">
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Passionate software engineer with 5+ years of experience
+                building scalable web applications. I love creating efficient
+                solutions and sharing knowledge through technical writing.
+              </p>
+            </div>
+
+            {/* Resume CTA */}
+            <Link className="w-full" href="/resume.pdf" target="_blank">
+              <Button className="w-full cursor-pointer" size="lg">
+                View Resume
+                <ExternalLink className="w-4 h-4 mr-2" />
+              </Button>
+            </Link>
+
+            {/* Social Links */}
+            <div className="flex flex-col space-y-3 w-full">
+              <Button
+                variant="outline"
+                className="w-full justify-start bg-transparent"
+                asChild
+              >
+                <a
+                  href="https://github.com/Ramanbaral"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="w-4 h-4 mr-2" />
+                  GitHub
+                </a>
+              </Button>
+              <Button
+                variant="outline"
+                className="w-full justify-start bg-transparent"
+                asChild
+              >
+                <a
+                  href="https://www.linkedin.com/in/ramanbaral/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Linkedin className="w-4 h-4 mr-2" />
+                  LinkedIn
+                </a>
+              </Button>
+              <Button
+                variant="outline"
+                className="w-full justify-start bg-transparent"
+                asChild
+              >
+                <a href="mailto:ramanbaral.dev@gmail.com">
+                  <Mail className="w-4 h-4 mr-2" />
+                  Email
+                </a>
+              </Button>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Main Content Area */}
+        <div className="ml-80 flex-1 p-8">
+          {/* Top Right Theme Toggle */}
+          <div className="fixed top-6 right-6 z-50">
+            {/* <ThemeToggle /> */}
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <Tabs
+              value={activeTab}
+              onValueChange={setActiveTab}
+              className="w-full"
+            >
+              <TabsList className="grid w-full grid-cols-4">
+                <TabsTrigger
+                  value="projects"
+                  className="flex items-center gap-2"
+                >
+                  <Briefcase className="w-4 h-4" />
+                  Projects
+                </TabsTrigger>
+                <TabsTrigger value="blogs" className="flex items-center gap-2">
+                  <BookOpen className="w-4 h-4" />
+                  Blogs
+                </TabsTrigger>
+                <TabsTrigger
+                  value="certifications"
+                  className="flex items-center gap-2"
+                >
+                  <Award className="w-4 h-4" />
+                  Certifications
+                </TabsTrigger>
+                <TabsTrigger
+                  value="experience"
+                  className="flex items-center gap-2"
+                >
+                  <Calendar className="w-4 h-4" />
+                  Experience
+                </TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="projects" className="space-y-6 mt-6">
+                <div className="space-y-4">
+                  <h2 className="text-3xl font-bold">Featured Projects</h2>
+                  <p className="text-muted-foreground">
+                    Here are some of my recent projects that showcase my
+                    technical skills and problem-solving abilities.
+                  </p>
+                </div>
+                <div className="grid gap-8">
+                  {projects.map((project, index) => (
+                    <Card
+                      key={index}
+                      className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary/20 hover:border-l-primary"
+                    >
+                      <CardHeader className="pb-4">
+                        <div className="flex justify-between items-start">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-3 mb-2">
+                              <CardTitle className="text-2xl group-hover:text-primary transition-colors">
+                                {project.title}
+                              </CardTitle>
+                              <div className="flex gap-2">
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  className="h-8 w-8 p-0 opacity-70 hover:opacity-100"
+                                  asChild
+                                >
+                                  <a
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    <Github className="w-4 h-4" />
+                                  </a>
+                                </Button>
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  className="h-8 w-8 p-0 opacity-70 hover:opacity-100"
+                                  asChild
+                                >
+                                  <a
+                                    href={project.demo}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    <ExternalLink className="w-4 h-4" />
+                                  </a>
+                                </Button>
+                              </div>
+                            </div>
+                            <CardDescription className="text-base leading-relaxed">
+                              {project.description}
+                            </CardDescription>
+                          </div>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="pt-0">
+                        <div className="space-y-4">
+                          <div>
+                            <h4 className="text-sm font-medium text-muted-foreground mb-2">
+                              Technologies Used
+                            </h4>
+                            <div className="flex flex-wrap gap-2">
+                              {project.tech.map((tech, techIndex) => (
+                                <Badge
+                                  key={techIndex}
+                                  variant="secondary"
+                                  className="px-3 py-1 text-xs font-medium"
+                                >
+                                  {tech}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+                          <div className="flex gap-3 pt-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="flex-1 bg-transparent"
+                              asChild
+                            >
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <Github className="w-4 h-4 mr-2" />
+                                View Code
+                              </a>
+                            </Button>
+                            <Button size="sm" className="flex-1" asChild>
+                              <a
+                                href={project.demo}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <ExternalLink className="w-4 h-4 mr-2" />
+                                Live Demo
+                              </a>
+                            </Button>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="blogs" className="space-y-6 mt-6">
+                <div className="space-y-4">
+                  <h2 className="text-3xl font-bold">Technical Blog Posts</h2>
+                  <p className="text-muted-foreground">
+                    I enjoy sharing my knowledge and experiences through
+                    technical writing.
+                  </p>
+                </div>
+                <div className="grid gap-6">
+                  {blogs.map((blog, index) => (
+                    <Card
+                      key={index}
+                      className="group hover:shadow-md transition-all duration-300 cursor-pointer"
+                    >
+                      <a
+                        href={blog.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <CardHeader className="pb-3">
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="flex-1 space-y-3">
+                              <div className="flex items-center gap-3">
+                                <div className="w-2 h-2 bg-primary rounded-full"></div>
+                                <CardTitle className="text-xl group-hover:text-primary transition-colors line-clamp-2">
+                                  {blog.title}
+                                </CardTitle>
+                              </div>
+                              <CardDescription className="text-base leading-relaxed line-clamp-3">
+                                {blog.description}
+                              </CardDescription>
+                              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                                <div className="flex items-center gap-1">
+                                  <Calendar className="w-4 h-4" />
+                                  <span>
+                                    {new Date(blog.date).toLocaleDateString(
+                                      "en-US",
+                                      {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                      }
+                                    )}
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-1">
+                                  <BookOpen className="w-4 h-4" />
+                                  <span>{blog.readTime}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="flex-shrink-0">
+                              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                                <ExternalLink className="w-5 h-5 text-primary" />
+                              </div>
+                            </div>
+                          </div>
+                        </CardHeader>
+                      </a>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="certifications" className="space-y-6 mt-6">
+                <div className="space-y-4">
+                  <h2 className="text-3xl font-bold">
+                    Professional Certifications
+                  </h2>
+                  <p className="text-muted-foreground">
+                    Professional certifications that validate my expertise in
+                    various technologies and platforms.
+                  </p>
+                </div>
+                <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2">
+                  {certifications.map((cert, index) => (
+                    <Card
+                      key={index}
+                      className="group hover:shadow-xl transition-all duration-300 relative overflow-hidden cursor-pointer border-2 hover:border-primary/20"
+                    >
+                      <a
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-primary/10 to-transparent"></div>
+                        <div className="absolute top-4 right-4 opacity-60 group-hover:opacity-100 transition-opacity">
+                          <ExternalLink className="w-5 h-5 text-primary" />
+                        </div>
+                        <CardHeader className="pb-6">
+                          <div className="flex items-start gap-6">
+                            <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors group-hover:scale-105 transform duration-300">
+                              <Award className="w-8 h-8 text-primary" />
+                            </div>
+                            <div className="flex-1 space-y-3">
+                              <CardTitle className="text-xl leading-tight group-hover:text-primary transition-colors">
+                                {cert.title}
+                              </CardTitle>
+                              <div className="space-y-2">
+                                <p className="text-base font-semibold text-foreground">
+                                  {cert.issuer}
+                                </p>
+                                <div className="flex flex-col gap-2 text-sm text-muted-foreground">
+                                  <div className="flex items-center gap-2">
+                                    <Calendar className="w-4 h-4" />
+                                    <span>
+                                      Issued:{" "}
+                                      {new Date(cert.date).toLocaleDateString(
+                                        "en-US",
+                                        {
+                                          year: "numeric",
+                                          month: "long",
+                                          day: "numeric",
+                                        }
+                                      )}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <span className="w-4 h-4 flex items-center justify-center">
+                                      <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                                    </span>
+                                    <span>
+                                      Credential ID: {cert.credentialId}
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="pt-0 space-y-4">
+                          <p className="text-muted-foreground leading-relaxed text-sm">
+                            {cert.description}
+                          </p>
+                          <div>
+                            <h4 className="text-sm font-medium text-muted-foreground mb-3">
+                              Key Skills Validated
+                            </h4>
+                            <div className="flex flex-wrap gap-2">
+                              {cert.skills.map((skill, skillIndex) => (
+                                <Badge
+                                  key={skillIndex}
+                                  variant="secondary"
+                                  className="px-3 py-1 text-xs font-medium"
+                                >
+                                  {skill}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+                          <div className="pt-2">
+                            <div className="flex items-center gap-2 text-sm text-primary font-medium group-hover:gap-3 transition-all">
+                              <span>View Certificate</span>
+                              <ExternalLink className="w-4 h-4" />
+                            </div>
+                          </div>
+                        </CardContent>
+                      </a>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="experience" className="space-y-6 mt-6">
+                <div className="space-y-4">
+                  <h2 className="text-3xl font-bold">
+                    Professional Experience
+                  </h2>
+                  <p className="text-muted-foreground">
+                    My professional journey and the impact I've made at various
+                    organizations.
+                  </p>
+                </div>
+                <div className="relative">
+                  {/* Timeline line */}
+                  <div className="absolute left-6 top-8 bottom-0 w-0.5 bg-border"></div>
+
+                  <div className="space-y-8">
+                    {experience.map((exp, index) => (
+                      <div key={index} className="relative">
+                        {/* Timeline dot */}
+                        <div className="absolute left-4 top-6 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-sm"></div>
+
+                        <Card className="ml-12 group hover:shadow-md transition-all duration-300">
+                          <CardHeader className="pb-4">
+                            <div className="space-y-3">
+                              <div className="flex items-start justify-between">
+                                <div className="space-y-1">
+                                  <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                                    {exp.title}
+                                  </CardTitle>
+                                  <div className="flex items-center gap-2">
+                                    <p className="text-lg font-semibold text-foreground">
+                                      {exp.company}
+                                    </p>
+                                    <Badge
+                                      variant="outline"
+                                      className="text-xs"
+                                    >
+                                      {exp.period}
+                                    </Badge>
+                                  </div>
+                                </div>
+                                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                  <Briefcase className="w-5 h-5 text-primary" />
+                                </div>
+                              </div>
+                            </div>
+                          </CardHeader>
+                          <CardContent className="pt-0 space-y-4">
+                            <p className="text-muted-foreground leading-relaxed">
+                              {exp.description}
+                            </p>
+                            <div>
+                              <h4 className="text-sm font-medium text-muted-foreground mb-3">
+                                Key Technologies
+                              </h4>
+                              <div className="flex flex-wrap gap-2">
+                                {exp.tech.map((tech, techIndex) => (
+                                  <Badge
+                                    key={techIndex}
+                                    variant="secondary"
+                                    className="px-3 py-1 text-xs"
+                                  >
+                                    {tech}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </TabsContent>
+            </Tabs>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
