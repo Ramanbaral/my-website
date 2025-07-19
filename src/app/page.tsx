@@ -14,6 +14,11 @@ import {
   Briefcase,
   Download,
 } from "lucide-react";
+import {
+  AiOutlineGithub,
+  AiOutlineLinkedin,
+  AiOutlineProduct,
+} from "react-icons/ai";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -25,7 +30,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-// import { ThemeToggle } from "@/components/theme-toggle";
+import { ThemeToggle } from "./_components/theme-toggle";
 import Link from "next/link";
 
 export default function Portfolio() {
@@ -201,7 +206,7 @@ export default function Portfolio() {
             <div className="flex flex-col space-y-3 w-full">
               <Button
                 variant="outline"
-                className="w-full justify-start bg-transparent"
+                className="w-full justify-start bg-transparent flex items-center"
                 asChild
               >
                 <a
@@ -209,8 +214,11 @@ export default function Portfolio() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Github className="w-4 h-4 mr-2" />
-                  GitHub
+                  <AiOutlineGithub
+                    className="text-primary mr-2 !size-6"
+                    size={128}
+                  />
+                  <span>GitHub</span>
                 </a>
               </Button>
               <Button
@@ -223,7 +231,10 @@ export default function Portfolio() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Linkedin className="w-4 h-4 mr-2" />
+                  <AiOutlineLinkedin
+                    className="text-primary text-2xl mr-2 !size-6"
+                    size={128}
+                  />
                   LinkedIn
                 </a>
               </Button>
@@ -233,7 +244,7 @@ export default function Portfolio() {
                 asChild
               >
                 <a href="mailto:ramanbaral.dev@gmail.com">
-                  <Mail className="w-4 h-4 mr-2" />
+                  <Mail className="text-primary w-4 h-4 mr-2 !size-6" />
                   Email
                 </a>
               </Button>
@@ -242,42 +253,46 @@ export default function Portfolio() {
         </div>
 
         {/* Main Content Area */}
-        <div className="ml-80 flex-1 p-8">
+        <div className="ml-80 flex-1 p-10">
           {/* Top Right Theme Toggle */}
-          <div className="fixed top-6 right-6 z-50">
-            {/* <ThemeToggle /> */}
+          <div className="fixed top-10 right-8 z-50">
+            <ThemeToggle />
           </div>
+
           <div className="max-w-4xl mx-auto">
             <Tabs
               value={activeTab}
               onValueChange={setActiveTab}
               className="w-full"
             >
-              <TabsList className="grid w-full grid-cols-4">
+              <TabsList className="grid w-full h-auto grid-cols-4">
                 <TabsTrigger
                   value="projects"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 data-[state=active]:text-primary"
                 >
-                  <Briefcase className="w-4 h-4" />
-                  Projects
+                  {/* <Briefcase className="!size-6 mr-2" /> */}
+                  <span className="text-xl font-semibold">Projects</span>
                 </TabsTrigger>
-                <TabsTrigger value="blogs" className="flex items-center gap-2">
-                  <BookOpen className="w-4 h-4" />
-                  Blogs
+                <TabsTrigger
+                  value="blogs"
+                  className="flex items-center gap-2 data-[state=active]:text-primary"
+                >
+                  {/* <BookOpen className="!size-6 mr-2" /> */}
+                  <span className="text-xl font-semibold">Blogs</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="certifications"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 data-[state=active]:text-primary"
                 >
-                  <Award className="w-4 h-4" />
-                  Certifications
+                  {/* <Award className="!size-6 mr-2" /> */}
+                  <span className="text-xl font-semibold">Certifications</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="experience"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 data-[state=active]:text-primary"
                 >
-                  <Calendar className="w-4 h-4" />
-                  Experience
+                  {/* <Calendar className="!size-6 mr-2" /> */}
+                  <span className="text-xl font-semibold">Experience</span>
                 </TabsTrigger>
               </TabsList>
 
@@ -307,14 +322,16 @@ export default function Portfolio() {
                                   variant="ghost"
                                   size="sm"
                                   className="h-8 w-8 p-0 opacity-70 hover:opacity-100"
-                                  asChild
                                 >
                                   <a
                                     href={project.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                   >
-                                    <Github className="w-4 h-4" />
+                                    <AiOutlineGithub
+                                      className="text-primary !size-6"
+                                      size={64}
+                                    />
                                   </a>
                                 </Button>
                                 <Button
@@ -328,7 +345,7 @@ export default function Portfolio() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                   >
-                                    <ExternalLink className="w-4 h-4" />
+                                    <ExternalLink className="w-4 h-4 !size-5" />
                                   </a>
                                 </Button>
                               </div>
@@ -369,7 +386,10 @@ export default function Portfolio() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
-                                <Github className="w-4 h-4 mr-2" />
+                                <AiOutlineGithub
+                                  className="!size-6 mr-3"
+                                  size={64}
+                                />
                                 View Code
                               </a>
                             </Button>
