@@ -38,12 +38,20 @@ export default function Portfolio() {
 
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "Skynest",
       description:
-        "Full-stack e-commerce solution built with Next.js, TypeScript, and Stripe integration",
-      tech: ["Next.js", "TypeScript", "Stripe", "Prisma", "PostgreSQL"],
-      link: "https://github.com/username/ecommerce",
-      demo: "https://ecommerce-demo.vercel.app",
+        "Skynest is a cloud-based platform that allows users to seamlessly upload, organize, and manage their digital content. Skynest supports secure storage of images and PDFs, giving users the ability to create folders, upload files, and keep their documents neatly organized in one place.˝",
+      tech: [
+        "Next.js",
+        "TypeScript",
+        "Zod",
+        "Drizzle",
+        "PostgreSQL",
+        "Docker",
+        "AWS",
+      ],
+      link: "https://github.com/Ramanbaral/Skynest",
+      demo: "https://skynest.ramanbaral.live",
     },
     {
       title: "Task Management App",
@@ -92,64 +100,58 @@ export default function Portfolio() {
 
   const certifications = [
     {
-      title: "AWS Certified Solutions Architect",
-      issuer: "Amazon Web Services",
-      date: "2024-01-10",
-      credentialId: "AWS-SAA-123456",
-      link: "https://www.credly.com/badges/aws-saa-123456",
+      title: "Meta Front-End Developer",
+      issuer: "Meta",
+      date: "2023-07",
+      credentialId: "JKZCTGA2HYW3",
+      link: "https://www.coursera.org/account/accomplishments/specialization/certificate/JKZCTGA2HYW3",
       description:
-        "Validates expertise in designing distributed systems on AWS platform with focus on scalability, security, and cost optimization.",
+        "Comprehensive certification covering React fundamentals, advanced patterns, and modern frontend development practices.",
       skills: [
-        "Cloud Architecture",
-        "Security",
-        "Scalability",
-        "Cost Optimization",
+        "React",
+        "TypeScript",
+        "Frontend Development",
+        "Component Design",
       ],
     },
     {
-      title: "Google Cloud Professional Developer",
-      issuer: "Google Cloud",
-      date: "2023-11-15",
-      credentialId: "GCP-PD-789012",
-      link: "https://www.credential.net/gcp-pd-789012",
+      title: "Blockchain Specialization",
+      issuer: "Coursera",
+      date: "2022-03",
+      credentialId: "KZTTX6HQJSQ9",
+      link: "https://www.coursera.org/account/accomplishments/specialization/certificate/KZTTX6HQJSQ9",
       description:
-        "Demonstrates ability to build scalable and reliable applications using Google Cloud technologies and best practices.",
-      skills: ["App Development", "Cloud Services", "DevOps", "Monitoring"],
+        "Covering the fundamentals of blockchain technology, decentralized applications (dApps), smart contracts, and consensus mechanisms, with hands-on experience in Ethereum and Solidity.",
+      skills: ["Blockchain", "Smart Contracts", "Dapps"],
     },
     {
-      title: "Meta React Developer Certificate",
-      issuer: "Meta",
-      date: "2023-09-20",
-      credentialId: "META-RD-345678",
-      link: "https://www.coursera.org/account/accomplishments/certificate/META-RD-345678",
+      title: "Introduction to Git and GitHub",
+      issuer: "Google",
+      date: "2022-03",
+      credentialId: "8XP8SJN6RMVG",
+      link: "https://www.coursera.org/account/accomplishments/certificate/8XP8SJN6RMVG",
       description:
-        "Comprehensive certification covering React fundamentals, advanced patterns, and modern development practices.",
+        "Completed Google 'Introduction to Git and GitHub' course, gaining practical knowledge of version control, branching, collaboration workflows, and open-source contributions using Git and GitHub.",
+      skills: ["Version Control", "Branching", "Git", "Github"],
+    },
+    {
+      title: "Cloud Core",
+      issuer: "IBM",
+      date: "2021-12",
+      credentialId: "",
+      link: "https://www.credly.com/badges/5aa8f52e-a655-45f0-9ba2-d6c7373b88dc/public_url",
+      description:
+        "Gaining skills in cloud computing models (IaaS, PaaS, SaaS), deployment types (Public, Private, Hybrid), virtualization, containers, microservices, serverless architecture, object storage, DevOps practices.",
       skills: [
-        "React",
-        "JavaScript",
-        "Frontend Development",
-        "Component Design",
+        "Containers",
+        "Virtualization",
+        "Serverless Computing",
+        "DevOps Fundamentals",
       ],
     },
   ];
 
   const experience = [
-    {
-      title: "Senior Software Engineer",
-      company: "TechCorp Inc.",
-      period: "2022 - Present",
-      description:
-        "Lead development of microservices architecture, mentored junior developers, and improved system performance by 40%",
-      tech: ["React", "Node.js", "AWS", "Docker", "Kubernetes"],
-    },
-    {
-      title: "Full Stack Developer",
-      company: "StartupXYZ",
-      period: "2020 - 2022",
-      description:
-        "Built and maintained web applications, implemented CI/CD pipelines, and collaborated with cross-functional teams",
-      tech: ["Vue.js", "Python", "PostgreSQL", "Redis", "Jenkins"],
-    },
     {
       title: "Frontend Developer",
       company: "WebSolutions Ltd.",
@@ -255,7 +257,7 @@ export default function Portfolio() {
         {/* Main Content Area */}
         <div className="ml-80 flex-1 p-10">
           {/* Top Right Theme Toggle */}
-          <div className="fixed top-10 right-8 z-50">
+          <div className="absolute top-10 right-8 z-50">
             <ThemeToggle />
           </div>
 
@@ -528,14 +530,16 @@ export default function Portfolio() {
                                       )}
                                     </span>
                                   </div>
-                                  <div className="flex items-center gap-2">
-                                    <span className="w-4 h-4 flex items-center justify-center">
-                                      <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
-                                    </span>
-                                    <span>
-                                      Credential ID: {cert.credentialId}
-                                    </span>
-                                  </div>
+                                  {cert.credentialId !== "" && (
+                                    <div className="flex items-center gap-2">
+                                      <span className="w-4 h-4 flex items-center justify-center">
+                                        <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
+                                      </span>
+                                      <span>
+                                        Credential ID: {cert.credentialId}
+                                      </span>
+                                    </div>
+                                  )}
                                 </div>
                               </div>
                             </div>
