@@ -1,9 +1,8 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-
+import { useTheme } from "next-themes";
+import { FaSun, FaMoon } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 
 export function ThemeToggle() {
@@ -24,14 +23,15 @@ export function ThemeToggle() {
 
   return (
     <Button
-      variant="ghost"
+      variant="outline"
       size="icon"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="h-8 w-8 hover:bg-accent transition-colors"
-      title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+      className="rounded-full w-11 h-11"
+      onClick={() => {
+        setTheme(theme === "light" ? "dark" : "light");
+      }}
     >
-      <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <FaSun className="absolute !h-6 !w-6 rotate-0 scale-100 dark:rotate-90 dark:scale-0"></FaSun>
+      <FaMoon className="absolute !h-6 !w-6 rotate-90 scale-0 dark:rotate-0 dark:scale-100"></FaMoon>
       <span className="sr-only">Toggle theme</span>
     </Button>
   );

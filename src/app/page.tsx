@@ -182,13 +182,13 @@ export default function Portfolio() {
             {/* Name and Title */}
             <div className="text-center space-y-2">
               <h1 className="text-2xl font-bold text-primary">Raman Baral</h1>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-lg  dark:text-white">
                 FullStack Software Engineer
               </p>
             </div>
 
             {/* Introduction */}
-            <div className="text-center space-y-4">
+            <div className="text-center space-y-3">
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Passionate software engineer with 5+ years of experience
                 building scalable web applications. I love creating efficient
@@ -198,7 +198,10 @@ export default function Portfolio() {
 
             {/* Resume CTA */}
             <Link className="w-full" href="/resume.pdf" target="_blank">
-              <Button className="w-full cursor-pointer" size="lg">
+              <Button
+                className="w-full cursor-pointer dark:text-white"
+                size="lg"
+              >
                 View Resume
                 <ExternalLink className="w-4 h-4 mr-2" />
               </Button>
@@ -257,7 +260,7 @@ export default function Portfolio() {
         {/* Main Content Area */}
         <div className="ml-80 flex-1 p-10">
           {/* Top Right Theme Toggle */}
-          <div className="absolute top-10 right-8 z-50">
+          <div className="absolute top-10 right-6 z-50">
             <ThemeToggle />
           </div>
 
@@ -395,7 +398,11 @@ export default function Portfolio() {
                                 View Code
                               </a>
                             </Button>
-                            <Button size="sm" className="flex-1" asChild>
+                            <Button
+                              size="sm"
+                              className="flex-1 dark:text-white"
+                              asChild
+                            >
                               <a
                                 href={project.demo}
                                 target="_blank"
