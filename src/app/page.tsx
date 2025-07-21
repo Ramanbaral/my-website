@@ -190,9 +190,11 @@ export default function Portfolio() {
             {/* Introduction */}
             <div className="text-center space-y-3">
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Passionate software engineer with 5+ years of experience
-                building scalable web applications. I love creating efficient
-                solutions and sharing knowledge through technical writing.
+                Computer Science undergraduate with 3+ years of hands-on
+                experience developing scalable web applications using
+                TypeScript, Next.js, Node.js and modern frontend architectures.
+                Passionate about building performant, maintainable code and
+                delivering robust user experiences.
               </p>
             </div>
 
