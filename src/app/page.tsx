@@ -169,13 +169,12 @@ export default function Portfolio() {
         <div className="fixed left-0 top-0 h-screen w-80 bg-muted/30 border-r border-border p-8 overflow-y-auto">
           <div className="flex flex-col items-center space-y-6">
             {/* Profile Image */}
-            <div className="relative">
+            <div className="relative w-[200px] h-[200px]">
               <Image
-                src="/profile.jpeg"
+                src="/profile.jpg"
                 alt="Profile Picture"
-                width={150}
-                height={150}
-                className="rounded-full border-4 border-primary/20"
+                fill
+                className="object-cover rounded-full border-4 border-primary/20"
               />
             </div>
 
