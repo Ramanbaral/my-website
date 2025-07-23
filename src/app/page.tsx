@@ -40,7 +40,7 @@ export default function Portfolio() {
     {
       title: "Skynest",
       description:
-        "Skynest is a cloud-based platform that allows users to seamlessly upload, organize, and manage their digital content. Skynest supports secure storage of images and PDFs, giving users the ability to create folders, upload files, and keep their documents neatly organized in one place.˝",
+        "Skynest is a cloud-based platform that allows users to seamlessly upload, organize, and manage their digital content.",
       tech: [
         "Next.js",
         "TypeScript",
