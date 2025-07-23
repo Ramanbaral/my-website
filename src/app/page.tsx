@@ -54,20 +54,29 @@ export default function Portfolio() {
       demo: "https://skynest.ramanbaral.live",
     },
     {
-      title: "Task Management App",
+      title: "TrueFeedback",
       description:
-        "Real-time collaborative task management with drag-and-drop functionality",
-      tech: ["React", "Node.js", "Socket.io", "MongoDB", "Express"],
-      link: "https://github.com/username/taskmanager",
-      demo: "https://taskmanager-demo.vercel.app",
+        "An anonymous feedback platform to help you grow through honest, unfiltered insights.",
+      tech: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Node.js",
+        "PostgreSQL",
+        "Prisma",
+        "Docker",
+        "AWS",
+      ],
+      link: "https://github.com/Ramanbaral/TrueFeedback",
+      demo: "https://truefeedback.ramanbaral.live",
     },
     {
       title: "AI Chat Application",
       description:
         "Intelligent chatbot with natural language processing and context awareness",
       tech: ["Python", "FastAPI", "OpenAI API", "React", "WebSocket"],
-      link: "https://github.com/username/ai-chat",
-      demo: "https://ai-chat-demo.vercel.app",
+      link: "https://github.com/username/taskmanager",
+      demo: "https://taskmanager-demo.vercel.app",
     },
   ];
 
