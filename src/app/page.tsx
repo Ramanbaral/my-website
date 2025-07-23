@@ -71,12 +71,19 @@ export default function Portfolio() {
       demo: "https://truefeedback.ramanbaral.live",
     },
     {
-      title: "AI Chat Application",
+      title: "FinTrack",
       description:
-        "Intelligent chatbot with natural language processing and context awareness",
-      tech: ["Python", "FastAPI", "OpenAI API", "React", "WebSocket"],
-      link: "https://github.com/username/taskmanager",
-      demo: "https://taskmanager-demo.vercel.app",
+        "FinTrack is a smart and intuitive expense tracker designed to help you manage your finances effortlessly.",
+      tech: [
+        "Nextjs",
+        "Typescript",
+        "TailwindCss",
+        "Recharts",
+        "PostgreSQL",
+        "Prisma ORM",
+      ],
+      link: "https://github.com/Ramanbaral/FinTrack",
+      demo: "",
     },
   ];
 
@@ -410,7 +417,12 @@ export default function Portfolio() {
                             </Button>
                             <Button
                               size="sm"
-                              className="flex-1 dark:text-white"
+                              className={`flex-1 dark:text-white ${
+                                project.demo === ""
+                                  ? "opacity-50 cursor-not-allowed"
+                                  : ""
+                              }`}
+                              disabled={project.demo === ""}
                               asChild
                             >
                               <a
