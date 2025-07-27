@@ -169,12 +169,12 @@ export default function Portfolio() {
 
   const experience = [
     {
-      title: "Frontend Developer",
-      company: "WebSolutions Ltd.",
-      period: "2019 - 2020",
+      title: "Web3 Developer",
+      company: "Velvet.Capital",
+      period: "2022 - 2023",
       description:
-        "Developed responsive web interfaces, optimized for performance, and ensured cross-browser compatibility",
-      tech: ["JavaScript", "HTML5", "CSS3", "Sass", "Webpack"],
+        "Worked as a Web3 React Developer, building responsive frontend applications that interact with Ethereum-based smart contracts. Integrated Web3 libraries like Ethers.js and Metamask to enable seamless blockchain interactions.",
+      tech: ["JavaScript", "React", "Ether.js", "Smart Contracts", ],
     },
   ];
 
@@ -287,7 +287,7 @@ export default function Portfolio() {
               onValueChange={setActiveTab}
               className="w-full"
             >
-              <TabsList className="grid w-full h-auto grid-cols-4">
+              <TabsList className="grid w-full h-auto grid-cols-3">
                 <TabsTrigger
                   value="projects"
                   className="flex items-center gap-2 data-[state=active]:text-primary"
@@ -295,13 +295,12 @@ export default function Portfolio() {
                   {/* <Briefcase className="!size-6 mr-2" /> */}
                   <span className="text-xl font-semibold">Projects</span>
                 </TabsTrigger>
-                <TabsTrigger
+                {/* <TabsTrigger
                   value="blogs"
                   className="flex items-center gap-2 data-[state=active]:text-primary"
                 >
-                  {/* <BookOpen className="!size-6 mr-2" /> */}
                   <span className="text-xl font-semibold">Blogs</span>
-                </TabsTrigger>
+                </TabsTrigger>  */}
                 <TabsTrigger
                   value="certifications"
                   className="flex items-center gap-2 data-[state=active]:text-primary"
