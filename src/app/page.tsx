@@ -187,10 +187,10 @@ export default function Portfolio() {
             {/* Profile Image */}
             <div className="relative w-[200px] h-[200px]">
               <Image
-                src="/profile.jpg"
+                src="/profile.png"
                 alt="Profile Picture"
                 fill
-                className="object-cover rounded-full border-4 border-primary/20"
+                className="object-cover object-top rounded-full border-4 border-primary/20"
               />
             </div>
 
