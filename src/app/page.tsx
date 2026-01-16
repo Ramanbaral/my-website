@@ -116,6 +116,24 @@ export default function Portfolio() {
 
   const certifications = [
     {
+      title: "AWS Certified Solutions Architect (SAA-C03)",
+      issuer: "AWS",
+      date: "2025-12-30",
+      credentialId: "15751c0b3aa1461fa09bb9c8705d8b93",
+      link: "https://cp.certmetrics.com/amazon/en/public/verify/credential/15751c0b3aa1461fa09bb9c8705d8b93",
+      description:
+        "Certified in architecting secure and scalable cloud infrastructure using AWS best practices. Skilled in designing decoupled architectures with microservices, optimizing data storage and compute resources, and implementing robust security protocols and disaster recovery strategies.",
+      skills: [
+        "AWS Cloud",
+        "Networking",
+        "Storage Solutions",
+        "Compute Services",
+        "Serverless Computing",
+        "DevOps Fundamentals",
+        "Security Best Practices",
+      ],
+    },
+    {
       title: "Meta Front-End Developer",
       issuer: "Meta",
       date: "2023-07",
@@ -150,31 +168,24 @@ export default function Portfolio() {
         "Completed Google 'Introduction to Git and GitHub' course, gaining practical knowledge of version control, branching, collaboration workflows, and open-source contributions using Git and GitHub.",
       skills: ["Version Control", "Branching", "Git", "Github"],
     },
-    {
-      title: "Cloud Core",
-      issuer: "IBM",
-      date: "2021-12",
-      credentialId: "",
-      link: "https://www.credly.com/badges/5aa8f52e-a655-45f0-9ba2-d6c7373b88dc/public_url",
-      description:
-        "Gaining skills in cloud computing models (IaaS, PaaS, SaaS), deployment types (Public, Private, Hybrid), virtualization, containers, microservices, serverless architecture, object storage, DevOps practices.",
-      skills: [
-        "Containers",
-        "Virtualization",
-        "Serverless Computing",
-        "DevOps Fundamentals",
-      ],
-    },
   ];
 
   const experience = [
+    {
+      title: "Full Stack Developer",
+      company: "ISTEM LAB",
+      period: "2025",
+      description:
+        "Developed end-to-end applications with a focus on clean, component-based architecture. Proficient in Next.js/React for frontend delivery and NestJS for scalable backend API development, styled with TailwindCSS and validated with TypeScript.",
+      tech: ["TypeScript", "Next.js", "Nest", "Docker"],
+    },
     {
       title: "Web3 Developer",
       company: "Velvet.Capital",
       period: "2022 - 2023",
       description:
         "Worked as a Web3 React Developer, building responsive frontend applications that interact with Ethereum-based smart contracts. Integrated Web3 libraries like Ethers.js and Metamask to enable seamless blockchain interactions.",
-      tech: ["JavaScript", "React", "Ether.js", "Smart Contracts", ],
+      tech: ["JavaScript", "React", "Ether.js", "Smart Contracts"],
     },
   ];
 
